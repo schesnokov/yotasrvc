@@ -1,0 +1,9 @@
+### Intellij ###
+# User-specific stuff:
+.idea
+*.iws
+*.iml
+*.ipr
+
+#Build data
+target/
