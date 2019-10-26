@@ -1,4 +1,4 @@
-package com.yota.tariffsrvc.controller;
+package com.yota.tariffsrvc.controller.rest;
 
 import org.springframework.web.bind.annotation.RestController;
 

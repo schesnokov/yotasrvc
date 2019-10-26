@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="home" value="/usr/share/tomcat"/>
+    <property name="defaultPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+    <property name="mdcPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] | u:%X{user},f:%X{factory},r:%X{requestUUID},s:%X{sessionId} | %logger{36} - %msg%n" />
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${defaultPattern}</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="consoleMDC" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${mdcPattern}</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${home}/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${home}/archive/ppa/%d{yyyy-MM,aux}/ppa.log-%d{yyyy-MM-dd}.gz
+            </fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${mdcPattern}</Pattern>
+        </encoder>
+    </appender>
+
+    <root level="WARN">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <logger name="com.yota.tariffsrvc" additivity="false" level="DEBUG">
+        <appender-ref ref="consoleMDC"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="org.springframework" additivity="false" level="INFO">
+        <appender-ref ref="consoleMDC"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="org.eclipse.persistence" additivity="false" level="INFO">
+        <appender-ref ref="consoleMDC"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="org.eclipse.persistence.logging.sql" additivity="false" level="DEBUG">
+        <appender-ref ref="consoleMDC"/>
+        <appender-ref ref="file"/>
+    </logger>
+</configuration>
