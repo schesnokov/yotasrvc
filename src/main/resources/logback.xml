@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="home" value="/usr/share/tomcat"/>
+    <property name="home" value="C:/yotalogs"/>
     <property name="defaultPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
     <property name="mdcPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] | u:%X{user},f:%X{factory},r:%X{requestUUID},s:%X{sessionId} | %logger{36} - %msg%n" />
 
@@ -42,16 +42,13 @@
 
     <logger name="org.springframework" additivity="false" level="INFO">
         <appender-ref ref="consoleMDC"/>
-        <appender-ref ref="file"/>
     </logger>
 
     <logger name="org.eclipse.persistence" additivity="false" level="INFO">
         <appender-ref ref="consoleMDC"/>
-        <appender-ref ref="file"/>
     </logger>
 
     <logger name="org.eclipse.persistence.logging.sql" additivity="false" level="DEBUG">
         <appender-ref ref="consoleMDC"/>
-        <appender-ref ref="file"/>
     </logger>
 </configuration>
