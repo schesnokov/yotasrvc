@@ -1,10 +1,12 @@
 # yotasrvc
 
 Build and run project:
-1. At root dir execute 
+1. At root dir execute
+gradle build
+2. At root dir execute 
 gradle bootJar
-2. For windows example: (java -jar C:/Users/schesnok/desktop/123/yotasrvc/build/libs/yotasrvc-0.0.1-SNAPSHOT.jar)
-java -jar yotasrvc-0.0.1-SNAPSHOT.jar
+3. For windows cd build/libs/ and execute java -jar example: 
+java -jar C:/Users/schesnok/desktop/123/yotasrvc/build/libs/yotasrvc-0.0.1-SNAPSHOT.jar
 
 
 В проекте использованы:
